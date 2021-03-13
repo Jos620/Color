@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="background" ref="bg">
+        <div id="container">
+            
+            <!-- Cor atual -->
+            <div id="hex" v-if="!show">
+                <h3>Cor Atual:</h3>
+                <h1 :style="`color: ${hex}`">{{ hex }}</h1>
+            </div>
+            
+            <!-- Histórico -->
+            <div id="history" v-else>
+                <h3>Histórico:</h3>
+                <ul>
+                    <li v-for="item in history" :style="`background-color: ${item}`">
+                        <p>{{ item }}</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Ações -->
+            <div id="action" :style="`color: ${hex}`">
+                <button class="btn--left" @click="show = !show">Histórico</button>
+                <button class="btn--right" @click="changeColor()">Mudar Cor</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.x"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
